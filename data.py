@@ -26,5 +26,16 @@ def alternative():
     summary = pd.DataFrame.from_dict(top_repositories(sortby='stars',categories='finance',limit=10))
     print(summary[['full_name','open_issues','stargazers_count']])
 
+
+def index_query(indices, interval="1d", start_date=None, end_date=None, column= "Adj Close", returns=False):
+    ind = indices
+
+    q = openbb.economy.index(ind,start_date=start_date)
+    print(q)
+
+
+
 if __name__ == '__main__':
-    alternative()
+    indexes = ["^DJI","SPY"]
+    start = "2022-01-01"
+    index_query(indexes,start_date=start)
